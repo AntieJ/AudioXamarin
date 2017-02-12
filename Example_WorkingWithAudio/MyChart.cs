@@ -26,12 +26,32 @@ namespace Example_WorkingWithAudio
 
         protected override void OnDraw(Canvas canvas)
         {
-            var audioBuffer = RecordingSingleton.GetSamples();
+            //var audioBuffer = RecordingSingleton.GetSamples();
 
-            if (audioBuffer.Any())
-            {    
-                DrawGraph(canvas, audioBuffer.ToArray());
-            }   
+            //if (audioBuffer.Any())
+            //{    
+            //    DrawGraph(canvas, audioBuffer.ToArray());
+            //}   
+
+            DrawGraph(canvas);
+        }
+
+        private void DrawGraph(Canvas canvas)
+        {
+            var linesToDraw = RecordingSingleton.GetDisplayLines();
+            var baseLine = RecordingSingleton.GetBaseLine();
+
+            if (linesToDraw != null && baseLine != null)
+            {
+                canvas.DrawLine(baseLine.Start.X, baseLine.Start.Y, baseLine.End.X, baseLine.End.Y, GetBlue());//base line
+
+                for (var i = 0; i < (linesToDraw.Length); i++)
+                {
+                    var line = linesToDraw[i];
+                    canvas.DrawLine(line.Start.X, line.Start.Y, line.End.X, line.End.Y, GetRed());
+
+                }
+            }
         }
 
         private void DrawGraph(Canvas canvas, Int16[] buffer)

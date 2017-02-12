@@ -79,9 +79,11 @@ namespace Example_WorkingWithAudio
 			handleButtonState ();
 		}
 
-        public void ReloadActivity()
+        public async Task ReloadActivity()
         {
-            //SetContentView(Resource.Layout.Main);
+            await RecordingSingleton.ProcessDisplayLinesAsync();
+
+
             var myChartView = this.FindViewById(Resource.Id.myChart1);
             myChartView.Invalidate();
             myChartView.RefreshDrawableState();
@@ -138,8 +140,8 @@ namespace Example_WorkingWithAudio
 
             var reloadButton = FindViewById<Button>(Resource.Id.reloadButton);
 
-            reloadButton.Click += delegate {
-                ReloadActivity();
+            reloadButton.Click += async delegate {
+                await ReloadActivity();
             };
 
             handleButtonState ();
