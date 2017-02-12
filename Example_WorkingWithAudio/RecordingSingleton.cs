@@ -9,6 +9,8 @@ namespace Example_WorkingWithAudio
     public static class RecordingSingleton
     {
         private static List<Int16> samples = new List<short>();
+        public static int lengthSamples;
+        public static int lengthSeconds;
 
         private static SimpleLine[] displayLines;
         private static SimpleLine baseLine;
@@ -21,6 +23,8 @@ namespace Example_WorkingWithAudio
         public static void SetSamples(List<Int16> toSet)
         {
             samples = toSet;
+            lengthSamples = samples.Count;
+            lengthSeconds = lengthSamples / 11025;
         }
 
         public static SimpleLine[] GetDisplayLines()

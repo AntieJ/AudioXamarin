@@ -69,7 +69,7 @@ namespace Example_WorkingWithAudio
 
 			RaiseRecordingStateChangedEvent ();
 
-			audioBuffer = new Byte[100000];
+			audioBuffer = new Byte[10000];
 			audioRecord = new AudioRecord (
                 // Hardware source of recording.
 				AudioSource.Mic,

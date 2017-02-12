@@ -26,14 +26,25 @@ namespace Example_WorkingWithAudio
 
         protected override void OnDraw(Canvas canvas)
         {
-            //var audioBuffer = RecordingSingleton.GetSamples();
-
-            //if (audioBuffer.Any())
-            //{    
-            //    DrawGraph(canvas, audioBuffer.ToArray());
-            //}   
-
             DrawGraph(canvas);
+            DrawInfo(canvas);
+        }
+
+        private void DrawInfo(Canvas canvas)
+        {
+            var samplesLength = RecordingSingleton.lengthSamples;
+            var secondsLength = RecordingSingleton.lengthSeconds;
+            
+            var stringToDisplay = string.Format("{0} samples. {1} seconds", samplesLength, secondsLength);
+
+            var paint = new Paint();
+            paint.SetARGB(255, 0, 255, 0);
+            paint.SetStyle(Paint.Style.Fill);
+            paint.StrokeWidth = 3;
+            paint.TextSize = 30;
+            paint.TextAlign= Paint.Align.Center;
+
+            canvas.DrawText(stringToDisplay, 500, 900, paint);
         }
 
         private void DrawGraph(Canvas canvas)
@@ -103,5 +114,8 @@ namespace Example_WorkingWithAudio
 
             return paint;
         }
+
+        
+
     }
 }
