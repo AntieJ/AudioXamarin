@@ -6,6 +6,7 @@ using Android.Views;
 using Android.Util;
 using Android.Graphics.Drawables;
 using Android.Graphics;
+using System.Threading;
 
 namespace Example_WorkingWithAudio
 {
@@ -26,6 +27,7 @@ namespace Example_WorkingWithAudio
 
         protected override void OnDraw(Canvas canvas)
         {
+            RecordingSingleton.ProcessDisplayLines(canvas.Width);
             DrawGraph(canvas);
             DrawInfo(canvas);
         }
@@ -65,36 +67,6 @@ namespace Example_WorkingWithAudio
             }
         }
 
-        private void DrawGraph(Canvas canvas, Int16[] buffer)
-        {
-            var screenWidth = 900;
-            var baseLineY = 500;
-            var lineHeightMax = 500;
-            canvas.DrawLine(0, baseLineY, screenWidth, baseLineY, GetBlue());//base line
-
-
-            var smallBuffer = new List<Int16>();
-            var everyXSample = 50;//50;
-            for (var i = 0; i < (buffer.Length); i += everyXSample)
-            {
-                smallBuffer.Add(buffer[i]);
-            }
-            var smallBufferArray = smallBuffer.Where(a => a < smallBuffer.Max() && a > smallBuffer.Min()).ToArray();
-
-            for (var i = 0; i < (smallBufferArray.Length); i++)
-            {
-                float xAnchor = ((float)i / (float)smallBufferArray.Length) * screenWidth;
-
-                float lineHeightPercent = (float)smallBufferArray[i] / (float)smallBufferArray.Max();
-                float lineHeightScaled = (float)lineHeightPercent * (float)lineHeightMax;
-
-                var lineHeight = (float)baseLineY - (float)lineHeightScaled;
-
-                canvas.DrawLine(xAnchor, baseLineY, xAnchor, lineHeight, GetRed());
-
-            }
-        }       
-
         private Paint GetBlue()
         {
             var paint = new Paint();
@@ -113,9 +85,7 @@ namespace Example_WorkingWithAudio
             paint.StrokeWidth = 4;
 
             return paint;
-        }
-
-        
+        }       
 
     }
 }

@@ -10,41 +10,53 @@ package example_workingwithaudio.example_workingwithaudio;
 public final class R {
     public static final class attr {
     }
+    public static final class color {
+        public static final int custom_theme_background=0x7f040000;
+    }
     public static final class drawable {
         public static final int ic_action_content_create=0x7f020000;
         public static final int ic_action_content_save=0x7f020001;
-        public static final int ic_menu_copy_holo_dark=0x7f020002;
-        public static final int ic_menu_cut_holo_dark=0x7f020003;
-        public static final int ic_menu_paste_holo_dark=0x7f020004;
-        public static final int ic_menu_search_holo_dark=0x7f020005;
-        public static final int icon=0x7f020006;
+        public static final int ic_equalizer_white_48dp=0x7f020002;
+        public static final int ic_keyboard_arrow_left_white_48dp=0x7f020003;
+        public static final int ic_menu_copy_holo_dark=0x7f020004;
+        public static final int ic_menu_cut_holo_dark=0x7f020005;
+        public static final int ic_menu_paste_holo_dark=0x7f020006;
+        public static final int ic_menu_search_holo_dark=0x7f020007;
+        public static final int ic_mic_white_48dp=0x7f020008;
+        public static final int ic_zoom_in_white_48dp=0x7f020009;
+        public static final int icon=0x7f02000a;
+        public static final int not_recording_button=0x7f02000b;
+        public static final int record_button=0x7f02000c;
+        public static final int recording_button=0x7f02000d;
     }
     public static final class id {
-        public static final int linearLayout1=0x7f070001;
-        public static final int linearLayout2=0x7f070004;
-        public static final int llEndPlaybackButton=0x7f070006;
-        public static final int llEndRecordingButton=0x7f070003;
-        public static final int llStartPlaybackButton=0x7f070005;
-        public static final int llStartRecordingButton=0x7f070002;
-        public static final int menu_edit=0x7f070009;
-        public static final int menu_preferences=0x7f07000b;
-        public static final int menu_save=0x7f07000a;
-        public static final int myChart1=0x7f070008;
-        public static final int reloadButton=0x7f070007;
-        public static final int toolbar=0x7f070000;
+        public static final int backButton=0x7f080009;
+        public static final int loadingText=0x7f080001;
+        public static final int menu_charts=0x7f080005;
+        public static final int menu_edit=0x7f080006;
+        public static final int menu_preferences=0x7f080008;
+        public static final int menu_save=0x7f080007;
+        public static final int myChart1=0x7f080002;
+        public static final int nav_toolbar=0x7f080004;
+        public static final int recordingButton2=0x7f080003;
+        public static final int toolbar=0x7f080000;
+        public static final int zoomButton=0x7f08000a;
     }
     public static final class layout {
-        public static final int main=0x7f030000;
-        public static final int toolbar=0x7f030001;
+        public static final int charts=0x7f030000;
+        public static final int main=0x7f030001;
+        public static final int toolbar=0x7f030002;
     }
     public static final class menu {
-        public static final int top_menus=0x7f060000;
+        public static final int nav_menus=0x7f070000;
+        public static final int top_menus=0x7f070001;
+        public static final int top_menus_chart=0x7f070002;
     }
     public static final class string {
-        public static final int ApplicationName=0x7f040001;
-        public static final int Hello=0x7f040000;
+        public static final int ApplicationName=0x7f050001;
+        public static final int Hello=0x7f050000;
     }
     public static final class style {
-        public static final int MyTheme=0x7f050000;
+        public static final int MyTheme=0x7f060000;
     }
 }

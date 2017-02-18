@@ -31,7 +31,8 @@ namespace Example_WorkingWithAudio
 
 		async Task ReadAudioAsync ()
 		{
-			using (var fileStream = new FileStream (filePath, System.IO.FileMode.Create, System.IO.FileAccess.Write)) {
+            
+            using (var fileStream = new FileStream (filePath, System.IO.FileMode.Create, System.IO.FileAccess.Write)) {
 				while (true) {
 					if (endRecording) {
 						endRecording = false;
@@ -52,8 +53,8 @@ namespace Example_WorkingWithAudio
 			audioRecord.Stop ();
 			audioRecord.Release ();
 			isRecording = false;
-
-			RaiseRecordingStateChangedEvent ();
+            RecordingSingleton.NewRecordingMade();
+            RaiseRecordingStateChangedEvent ();
 		}
 
 		private void RaiseRecordingStateChangedEvent()

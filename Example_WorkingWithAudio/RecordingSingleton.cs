@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Drawing;
+using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -12,6 +13,7 @@ namespace Example_WorkingWithAudio
         public static int lengthSamples;
         public static int lengthSeconds;
 
+        private static bool requiresReload;
         private static SimpleLine[] displayLines;
         private static SimpleLine baseLine;
 
@@ -37,14 +39,16 @@ namespace Example_WorkingWithAudio
             return baseLine;
         }
 
-        public async static Task ProcessDisplayLinesAsync()
+        public async static Task ProcessDisplayLinesAsync(int screenWidth)
         {
-            await Task.Run(() => ProcessDisplayLines());
+            await Task.Run(() => ProcessDisplayLines(screenWidth));
         }
 
-        public static void ProcessDisplayLines()
-        {
-            var screenWidth = 900;
+        public static void ProcessDisplayLines(int screenWidth)
+        {          
+
+            ReadFileIntoSampleArray();
+            
             var baseLineY = 500;
             var lineHeightMax = 500;
 
@@ -83,6 +87,38 @@ namespace Example_WorkingWithAudio
             }
 
             displayLines =  sampleLines;
+            requiresReload = false;
+        }
+        
+        public static void ReadFileIntoSampleArray()
+        {
+            if (!requiresReload) return;
+
+            string filePath = "/data/data/Example_WorkingWithAudio.Example_WorkingWithAudio/files/testAudio.mp4";
+            byte[] buffer = null;
+            
+            FileStream fileStream = new FileStream(filePath, FileMode.Open, FileAccess.Read);
+            BinaryReader binaryReader = new BinaryReader(fileStream);
+            long totalBytes = new System.IO.FileInfo(filePath).Length;
+            buffer = binaryReader.ReadBytes((Int32)totalBytes);
+            fileStream.Close();
+            fileStream.Dispose();
+            binaryReader.Close();
+
+
+            var sampleList = new List<Int16>();
+            for (int n = 0; n < buffer.Length; n += 2)
+            {
+                Int16 sample = BitConverter.ToInt16(buffer, n);
+                sampleList.Add(sample);
+            }
+
+            SetSamples(sampleList);
+        }
+
+        public static void NewRecordingMade()
+        {
+            requiresReload = true;
         }
     }
 }

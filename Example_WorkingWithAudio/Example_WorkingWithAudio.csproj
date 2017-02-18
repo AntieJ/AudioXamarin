@@ -49,6 +49,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activity1.cs" />
+    <Compile Include="ChartsActivity.cs" />
     <Compile Include="INotificationReceiver.cs" />
     <Compile Include="LowLevelPlayAudio.cs" />
     <Compile Include="LowLevelRecordAudio.cs" />
@@ -61,6 +62,9 @@
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />
     <None Include="Assets\AboutAssets.txt" />
+    <AndroidResource Include="Resources\Layout\Charts.axml">
+      <SubType>Designer</SubType>
+    </AndroidResource>
   </ItemGroup>
   <ItemGroup>
     <AndroidResource Include="Resources\Layout\Main.axml">
@@ -100,6 +104,28 @@
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_menu_paste_holo_dark.png" />
     <AndroidResource Include="Resources\drawable-xxhdpi\ic_menu_search_holo_dark.png" />
     <AndroidResource Include="Resources\menu\top_menus.xml" />
+    <AndroidResource Include="Resources\Values\color.xml" />
+    <AndroidResource Include="Resources\menu\nav_menus.xml" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_equalizer_white_48dp.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_equalizer_white_48dp.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_equalizer_white_48dp.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_equalizer_white_48dp.png" />
+    <AndroidResource Include="Resources\drawable\record_button.xml" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_mic_white_48dp.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_zoom_in_white_48dp.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_mic_white_48dp.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_zoom_in_white_48dp.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_mic_white_48dp.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_zoom_in_white_48dp.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_mic_white_48dp.png" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_zoom_in_white_48dp.png" />
+    <AndroidResource Include="Resources\drawable\recording_button.xml" />
+    <AndroidResource Include="Resources\drawable\not_recording_button.xml" />
+    <AndroidResource Include="Resources\drawable-xxhdpi\ic_keyboard_arrow_left_white_48dp.png" />
+    <AndroidResource Include="Resources\drawable-xhdpi\ic_keyboard_arrow_left_white_48dp.png" />
+    <AndroidResource Include="Resources\drawable-mdpi\ic_keyboard_arrow_left_white_48dp.png" />
+    <AndroidResource Include="Resources\drawable-hdpi\ic_keyboard_arrow_left_white_48dp.png" />
+    <AndroidResource Include="Resources\menu\top_menus_chart.xml" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Novell\Novell.MonoDroid.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
