@@ -8,10 +8,11 @@ using Android.Widget;
 using Android.OS;
 using Android.Media;
 using System.Threading.Tasks;
+using Android.Content.PM;
 
 namespace Example_WorkingWithAudio
 {
-	[Activity(Label = "Example_WorkingWithAudio", MainLauncher = true, Icon = "@drawable/icon")]
+    [Activity(Label = "Example_WorkingWithAudio", MainLauncher = true, Icon = "@drawable/icon", ScreenOrientation = ScreenOrientation.Portrait)]
 	public class WorkingWithAudioActivity : Activity
 	{
 		LowLevelPlayAudio llPlayAudio = new LowLevelPlayAudio ();
@@ -96,10 +97,13 @@ namespace Example_WorkingWithAudio
 			// Set our view from the "main" layout resource
 			SetContentView (Resource.Layout.Main);
 
-			// Hook up all of our handlers.           
+            // Toolbar
+            var toolbar = FindViewById<Toolbar>(Resource.Id.toolbar);
+            SetActionBar(toolbar);
+            ActionBar.Title = "AJ Toolbar";
 
-			// Low-level operations.
-			startLlRecording = FindViewById<Button> (Resource.Id.llStartRecordingButton);
+            // Low-level operations.
+            startLlRecording = FindViewById<Button> (Resource.Id.llStartRecordingButton);
 			startLlRecording.Click += delegate {
                
 				startOperationAsync (llRecordAudio);
@@ -149,6 +153,19 @@ namespace Example_WorkingWithAudio
             
 			activity = this;
 		}
+
+        public override bool OnCreateOptionsMenu(IMenu menu)
+        {
+            MenuInflater.Inflate(Resource.Menu.top_menus, menu);
+            return base.OnCreateOptionsMenu(menu);
+        }
+
+        public override bool OnOptionsItemSelected(IMenuItem item)
+        {
+            Toast.MakeText(this, "Action selected: " + item.TitleFormatted,
+                ToastLength.Short).Show();
+            return base.OnOptionsItemSelected(item);
+        }
 
         async Task startOperationAsync(INotificationReceiver nRec)
         {
